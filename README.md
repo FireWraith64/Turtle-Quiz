@@ -1,2 +1,3 @@
 # Turtle-Quiz
-My html Project
+My CodePen Project!
+By FireWraith64
