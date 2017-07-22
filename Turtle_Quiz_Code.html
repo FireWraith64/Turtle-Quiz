@@ -1,0 +1,233 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <style type="text/css">
+  	h1 {text-align:center; color:red; font-size:60px;}
+.turtle {text-align:center;}
+.start {text-align:center;}
+.hidden {
+  display: none;
+}
+.corner {position:absolute;
+  left:0px;
+  top:0px;
+}
+.Qs {text-align:center; font-size:30px; color:aqua;}
+.Turtle_Says { position:absolute; left:110px; top:35px;}
+
+  </style>
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <script>
+  	var QC = 0;
+
+
+$('.start').on('click', function() {
+  $('.start').toggleClass('hidden');
+  $('.turtle').toggleClass('corner');
+  $('.Q1').toggleClass('hidden');
+});
+
+$('.S1').on('click', function() {
+  var selValue1 = $('input[name=Q1]:checked').val();
+  if (selValue1 == "Up") {
+    // correct answer
+    QC += 1; 
+    $('.Turtle_Says').html("Yay").delay(3000).queue(function() {
+        $(this).html("");
+        $('.Q1').toggleClass('hidden');
+        $('.Q2').toggleClass('hidden');
+        $(this).dequeue();
+    });  
+  } else {
+    // incorrect answer
+    $('.Turtle_Says').html("NO!").delay(3000).queue(function() {
+        $(this).html("Try Again");
+        $(this).dequeue();
+    });
+  };
+});
+
+$('.S2').on('click', function() {
+  var selValue2 = $('input[name=Q2]:checked').val();
+  if (selValue2 == "married") {
+    // correct answer
+    QC += 1; 
+    $('.Turtle_Says').html("Yay").delay(3000).queue(function() {
+        $(this).html("");
+        $('.Q2').toggleClass('hidden');
+        $('.Q3').toggleClass('hidden');
+        $(this).dequeue();
+    });
+  } else {
+    // incorrect answer
+    $('.Turtle_Says').html("NO!").delay(3000).queue(function() { 
+      $(this).html("Try Again");
+        $(this).dequeue();
+    });
+  };
+});
+
+$('.S3').on('click', function() {
+  var selValue3 = $('input[name=Q3]:checked').val();
+  if (selValue3 == "Fire") {
+    // correct answer
+    QC += 1; 
+    $('.Turtle_Says').html("Yay").delay(3000).queue(function(n) {
+        $(this).html("");
+        $('.Q3').toggleClass('hidden');
+        $('.Q4').toggleClass('hidden');
+        $(this).dequeue();
+    });
+    
+  } else {
+    // incorrect answer
+    $('.Turtle_Says').html("NO!").delay(3000).queue(function(n) {
+        $(this).html("Try Again");
+        $(this).dequeue();
+    });
+  };
+  
+});
+$('.S4').on('click', function() {
+  var selValue4 = $('input[name=Q4]:checked').val();
+  if (selValue4 == "Time") {
+    // correct answer
+    QC += 1; 
+    $('.Turtle_Says').html("Yay").delay(3000).queue(function(n) {
+        $(this).html("");
+        $('.Q4').toggleClass('hidden');
+        $('.Q5').toggleClass('hidden');
+        $(this).dequeue();
+    });
+    
+  } else {
+    // incorrect answer
+    $('.Turtle_Says').html("NO!").delay(3000).queue(function(n) {
+        $(this).html("Try Again");
+        $(this).dequeue();
+    });
+  };
+  
+});
+$('.S5').on('click', function() {
+  var selValue5 = $('input[name=Q5]:checked').val();
+  if (selValue5 == "Trouble") {
+    // correct answer
+    QC += 1; 
+    $('.Turtle_Says').html("Yay").delay(3000).queue(function(n) {
+        $(this).html("");
+        $('.Q5').toggleClass('hidden');
+        $('.End').toggleClass('hidden');
+        $('.turtle').toggleClass('hidden');
+        $(this).dequeue();
+    });
+    
+  } else {
+    // incorrect answer
+    $('.Turtle_Says').html("NO!").delay(3000).queue(function(n) {
+        $(this).html("Try Again");
+        $(this).dequeue();
+    });
+  };
+  
+});
+
+  </script>
+  <h1><u>The turtle quiz<div class="turtle"><img height=100px src="http://orig12.deviantart.net/cae0/f/2009/350/0/7/turtle_by_mr_mooner.png"></div></u></h1>
+<div class="Turtle_Says"></div>
+<div class="start"><img height=300px src="https://ak5.picdn.net/shutterstock/videos/1897825/thumb/1.jpg?i10c=img.resize(height:160)"></div>
+
+         <!--  hidden  -->
+<div class="Q1 Qs hidden"> 
+  Question 1:<br> A little girl kicks a soccer ball. It goes 10 feet and comes back to her. How is this possible?
+  <form onsubmit= "return false;">
+  <input type="radio" name="Q1" value="Up" checked> She kicks the ball up<br>
+  <input type="radio" name="Q1" value="down"> She kicks the ball down<br>
+  <input type="radio" name="Q1" value="forward"> She kicks the ball forwards<br>
+  <input type="radio" name="Q1" value="sidways"> She kicks the ball sidways<br>
+    <input class="S1" type="image" src="https://t3.ftcdn.net/jpg/00/29/87/10/240_F_29871034_xCMtf5cxrqeSmxsJk86QHqns3IwCqLVd.jpg" alt="Submit">
+</form>
+</div>
+<div class="Q2 Qs hidden">
+  <form onsubmit="return false;">
+ Question 2:<br>
+    You see a boat filled with people. You look again, but this time you don't see a <u>single</u> person on the boat.<br>
+Why?<br>
+<input type="radio" name="Q2" value="jump">
+They jumped off the boat<br>
+<input type="radio" name="Q2" value="inside">
+They went inside<br>
+<input type="radio" name="Q2" value="married">
+They're all married<br>
+<input type="radio" name="Q2" value="disappear">
+They all disappeared<br>
+<input class="S2" type="image" src="https://t3.ftcdn.net/jpg/00/29/87/10/240_F_29871034_xCMtf5cxrqeSmxsJk86QHqns3IwCqLVd.jpg" alt="Submit">
+</form>
+</div>
+<div class="Q3 Qs hidden">
+<form onsubmit="return false;"> 
+   Question 3:<br>
+  I eat, I live, I breathe, I live, I drink, I die.<br>
+  What am I?<br>
+  <input type="radio" name="Q3" value="Ice">
+  Ice<br>
+  <input type="radio" name="Q3" value="Fire">
+  Fire<br>
+  <input type="radio" name="Q3" value="Water">
+  Water<br>
+  <input type="radio" name="Q3" value="Char">
+  Charcoal<br>
+  <input class="S3" type="image" src="https://t3.ftcdn.net/jpg/00/29/87/10/240_F_29871034_xCMtf5cxrqeSmxsJk86QHqns3IwCqLVd.jpg" alt="Submit">
+</form>
+</div>
+<div class="Q4 Qs hidden">
+<form onsubmit="return false;">
+  Question 4:<br>
+  What flies without wings?<br>
+  <input type="radio" name="Q4" value="Bird">
+  A Bird<br>
+  <input type="radio" name="Q4" value="Plane">
+  A Plane<br>
+  <input type="radio" name="Q4" value="Dreams">
+  Dreams<br>
+  <input type="radio" name="Q4" value="Time">
+  Time<br>
+  <input class="S4" type="image" src="https://t3.ftcdn.net/jpg/00/29/87/10/240_F_29871034_xCMtf5cxrqeSmxsJk86QHqns3IwCqLVd.jpg" alt="Submit">
+  </form>
+</div>
+  
+<div class="Q5 Qs hidden">
+  <form onsubmit="return false;">
+    Question 5:<br>
+  What is easy to get into,<br>
+  but hard to get out of?<br>
+  <input type="radio" name="Q5" value="Hole">
+  A Hole<br>
+  <input type="radio" name="Q5" value="Work">
+  Xtra Work<br>
+  <input type="radio" name="Q5" value="Trouble">
+  Trouble<br>
+  <input type="radio" name="Q5" value="Shell">
+  A Shell<br>
+  <input class="S5" type="image" src="https://t3.ftcdn.net/jpg/00/29/87/10/240_F_29871034_xCMtf5cxrqeSmxsJk86QHqns3IwCqLVd.jpg" alt="Submit">
+  </form>
+</div>
+<div class="Qs hidden End">
+  <form>
+  Congratulations you finished the turtle quiz!<br>
+ <img height=200px src="http://orig12.deviantart.net/cae0/f/2009/350/0/7/turtle_by_mr_mooner.png">
+  </form>
+</div>
+</body>
+</html>
