@@ -29,7 +29,12 @@
 
 <body>
   <script>
-  	var QC = 0;
+var QC = 0;
+var Q1W = 0;
+var Q2W = 0;
+var Q3W = 0;
+var Q4W = 0;
+var Q5W = 0;
 
 
 $('.start').on('click', function() {
@@ -42,7 +47,8 @@ $('.S1').on('click', function() {
   var selValue1 = $('input[name=Q1]:checked').val();
   if (selValue1 == "Up") {
     // correct answer
-    QC += 1; 
+    if(Q1W==0)
+      QC += 1;
     $('.Turtle_Says').html("Yay").delay(3000).queue(function() {
         $(this).html("");
         $('.Q1').toggleClass('hidden');
@@ -50,6 +56,7 @@ $('.S1').on('click', function() {
         $(this).dequeue();
     });  
   } else {
+    Q1W += 1;
     // incorrect answer
     $('.Turtle_Says').html("NO!").delay(3000).queue(function() {
         $(this).html("Try Again");
@@ -62,7 +69,8 @@ $('.S2').on('click', function() {
   var selValue2 = $('input[name=Q2]:checked').val();
   if (selValue2 == "married") {
     // correct answer
-    QC += 1; 
+    if(Q2W==0)
+      QC += 1; 
     $('.Turtle_Says').html("Yay").delay(3000).queue(function() {
         $(this).html("");
         $('.Q2').toggleClass('hidden');
@@ -70,6 +78,7 @@ $('.S2').on('click', function() {
         $(this).dequeue();
     });
   } else {
+    Q2W += 1;
     // incorrect answer
     $('.Turtle_Says').html("NO!").delay(3000).queue(function() { 
       $(this).html("Try Again");
@@ -82,7 +91,8 @@ $('.S3').on('click', function() {
   var selValue3 = $('input[name=Q3]:checked').val();
   if (selValue3 == "Fire") {
     // correct answer
-    QC += 1; 
+    if(Q3W==0)
+      QC += 1; 
     $('.Turtle_Says').html("Yay").delay(3000).queue(function(n) {
         $(this).html("");
         $('.Q3').toggleClass('hidden');
@@ -92,6 +102,7 @@ $('.S3').on('click', function() {
     
   } else {
     // incorrect answer
+    Q3W += 1;
     $('.Turtle_Says').html("NO!").delay(3000).queue(function(n) {
         $(this).html("Try Again");
         $(this).dequeue();
@@ -103,7 +114,8 @@ $('.S4').on('click', function() {
   var selValue4 = $('input[name=Q4]:checked').val();
   if (selValue4 == "Time") {
     // correct answer
-    QC += 1; 
+    if(Q4W==0)
+      QC += 1; 
     $('.Turtle_Says').html("Yay").delay(3000).queue(function(n) {
         $(this).html("");
         $('.Q4').toggleClass('hidden');
@@ -113,6 +125,7 @@ $('.S4').on('click', function() {
     
   } else {
     // incorrect answer
+    Q4W += 1;
     $('.Turtle_Says').html("NO!").delay(3000).queue(function(n) {
         $(this).html("Try Again");
         $(this).dequeue();
@@ -124,17 +137,20 @@ $('.S5').on('click', function() {
   var selValue5 = $('input[name=Q5]:checked').val();
   if (selValue5 == "Trouble") {
     // correct answer
-    QC += 1; 
+    if(Q5W==0)
+      QC += 1; 
     $('.Turtle_Says').html("Yay").delay(3000).queue(function(n) {
         $(this).html("");
         $('.Q5').toggleClass('hidden');
         $('.End').toggleClass('hidden');
         $('.turtle').toggleClass('hidden');
+        $('.QC').html(QC)
         $(this).dequeue();
     });
     
   } else {
     // incorrect answer
+    Q5W += 1;
     $('.Turtle_Says').html("NO!").delay(3000).queue(function(n) {
         $(this).html("Try Again");
         $(this).dequeue();
@@ -142,9 +158,8 @@ $('.S5').on('click', function() {
   };
   
 });
-
   </script>
-  <h1><u>The turtle quiz<div class="turtle"><img height=100px src="http://orig12.deviantart.net/cae0/f/2009/350/0/7/turtle_by_mr_mooner.png"></div></u></h1>
+<h1><u>The turtle quiz<div class="turtle"><img height=100px src="http://orig12.deviantart.net/cae0/f/2009/350/0/7/turtle_by_mr_mooner.png"></div></u></h1>
 <div class="Turtle_Says"></div>
 <div class="start"><img height=300px src="https://ak5.picdn.net/shutterstock/videos/1897825/thumb/1.jpg?i10c=img.resize(height:160)"></div>
 
@@ -226,6 +241,7 @@ They all disappeared<br>
 <div class="Qs hidden End">
   <form>
   Congratulations you finished the turtle quiz!<br>
+    You got <span class="QC"></span> right the first time!<br>
  <img height=200px src="http://orig12.deviantart.net/cae0/f/2009/350/0/7/turtle_by_mr_mooner.png">
   </form>
 </div>
